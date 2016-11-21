@@ -1,0 +1,26 @@
+node:
+  build: .
+  command: npm run watch
+  environment:
+    APP_PORT: 17142
+    NODE_ENV: development
+    PG_HOST: postgresql
+    PG_USER: dinnerplan
+    PG_DB: dinnerplan
+  ports:
+    - "19142:17142"
+  volumes:
+    - ./config:/var/www/config
+    - ./src:/var/www/src
+    - ./test:/var/www/test
+    - ./package.json:/var/www/package.json
+    - ./coverage:/var/www/coverage
+  links:
+    - postgresql
+
+postgresql:
+  image: postgres:9.5
+  volumes:
+    - ./bootstrap/postgresql:/docker-entrypoint-initdb.d
+  ports:
+    - "19132:5432"

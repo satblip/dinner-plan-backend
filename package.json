@@ -1,0 +1,39 @@
+{
+  "name": "dinner-plan-backend",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Backend api for dinner plan app",
+  "main": "index.js",
+  "engines": {
+    "node": "~6.0.0"
+  },
+  "scripts": {
+    "build": "babel --presets=es2015 --ignore='node_modules' src -d dist",
+    "start": "node dist",
+    "dev": "babel-node --presets=es2015 --ignore='node_modules' src",
+    "watch": "nodemon -L --exec npm run dev",
+    "test": "LOG_LEVEL=fatal node_modules/.bin/babel-node --harmony_proxies node_modules/.bin/babel-istanbul cover node_modules/.bin/_mocha test/index.js;"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Sagacify (https://github.com/Sagacify)",
+  "bugs": {
+    "url": "/issues"
+  },
+  "homepage": "",
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": ["babel-plugin-transform-object-rest-spread"],
+    "ignore": "node_modules"
+  },
+  "semistandard": {
+    "globals": [
+      "describe", "it", "before", "after"
+    ],
+    "ignore": "dist"
+  }
+}

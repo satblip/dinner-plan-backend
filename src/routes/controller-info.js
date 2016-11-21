@@ -10,7 +10,8 @@ const controllerMethodsMapping = {
 export default ({ method, path, query, body }) => {
   const [controller, id, attr] = path.slice(1).split('/');
 
-  if (controllers.indexOf(`${controller}.js`) === -1) {
+  if (!controllers.includes(controller) &&
+      !controllers.includes(`${controller}.js`)) {
     return new Error('CONTROLLER_NOT_FOUND');
   }
 
